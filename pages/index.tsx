@@ -1,9 +1,10 @@
+import RootLayout from "layouts/Root";
 import Seo from "../components/Seo";
 
-export default function Home() {
+export default function Index() {
   return (
-    <div>
+    <RootLayout>
       <Seo title="Invoice App" />
-    </div>
+    </RootLayout>
   );
 }
