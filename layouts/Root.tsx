@@ -3,8 +3,14 @@ import { styled } from "stitches-config";
 
 const Wrapper = styled("div", {
   display: "grid",
-  gridTemplateColumns: "103px 1fr",
+  gridTemplateColumns: "1fr",
+  gridTemplateRows: "80px 1fr",
   height: "100vh",
+
+  "@lg": {
+    gridTemplateColumns: "103px 1fr",
+    gridTemplateRows: "1fr",
+  },
 });
 
 interface IRootLayout {
