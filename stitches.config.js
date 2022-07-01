@@ -14,6 +14,7 @@ export const {
     colors: {
       primary: "hsl(252, 94%, 67%)",
       "primary-lt": "hsl(252, 100%, 73%)",
+      "primary-ltr": "hsl(231, 73%, 93%)",
 
       "ntrl-dkr": "hsl(228, 29%, 7%)",
       "ntrl-dk": "hsl(231, 20%, 27%)",
@@ -26,8 +27,12 @@ export const {
       warning: "hsl(34, 100%, 50%)",
     },
     space: {},
-    fontSizes: {},
-    fonts: {},
+    fontSizes: {
+      xs: "0.75rem",
+    },
+    fonts: {
+      spartan: "Spartan, sans-serif",
+    },
     fontWeights: {},
     lineHeights: {},
     letterSpacings: {},
