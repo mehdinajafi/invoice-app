@@ -23,12 +23,18 @@ export const {
       "ntrl-ltr": "hsl(231, 20%, 61%)",
 
       success: "hsl(160, 67%, 52%)",
+      "success-lt": "hsl(160 67% 52% / 6%)",
       danger: "rgb(236, 87, 87)",
       warning: "hsl(34, 100%, 50%)",
+      "warning-lt": "hsla(34 100% 50% / 6%)",
     },
     space: {},
     fontSizes: {
       xs: "0.75rem",
+      sm: "0.875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
     },
     fonts: {
       spartan: "Spartan, sans-serif",
