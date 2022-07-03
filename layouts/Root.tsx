@@ -13,6 +13,17 @@ const Wrapper = styled("div", {
   },
 });
 
+const Main = styled("main", {
+  width: "100%",
+  maxWidth: "45.625rem",
+  margin: "0 auto",
+  padding: "2rem 1.5rem",
+
+  "@lg": {
+    padding: "4.5rem 0",
+  },
+});
+
 interface IRootLayout {
   children: React.ReactNode;
 }
@@ -21,7 +32,7 @@ const RootLayout: React.FC<IRootLayout> = (props) => {
   return (
     <Wrapper>
       <Sidebar />
-      <main>{props.children}</main>
+      <Main>{props.children}</Main>
     </Wrapper>
   );
 };

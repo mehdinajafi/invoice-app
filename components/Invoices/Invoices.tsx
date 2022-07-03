@@ -1,7 +1,7 @@
 import IInvoice from "types/invoice";
 import { Header } from "./Header";
 import Invoice from "./Invoice/Invoice";
-import { InvoicesList, Wrapper } from "./Invoices.styles";
+import { InvoicesList } from "./Invoices.styles";
 
 interface IInvoices {
   invoices: IInvoice[];
@@ -9,7 +9,7 @@ interface IInvoices {
 
 const Invoices: React.FC<IInvoices> = (props) => {
   return (
-    <Wrapper>
+    <div>
       <Header />
 
       <InvoicesList>
@@ -17,7 +17,7 @@ const Invoices: React.FC<IInvoices> = (props) => {
           <Invoice key={invoice.id} invoice={invoice} />
         ))}
       </InvoicesList>
-    </Wrapper>
+    </div>
   );
 };
 
