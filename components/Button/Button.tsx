@@ -37,6 +37,14 @@ const Button = styled("button", {
           backgroundColor: "hsl(231, 73%, 93%)",
         },
       },
+      dark: {
+        backgroundColor: "hsl(230, 21%, 27%)",
+        color: "$ntrl-ltr",
+
+        "&:hover": {
+          backgroundColor: "$ntrl-dkr",
+        },
+      },
     },
   },
 });

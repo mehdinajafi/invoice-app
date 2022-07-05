@@ -22,7 +22,7 @@ const GoBackLink = styled("a", {
     color: "$ntrl-lt",
   },
 
-  "& img": {
+  "& svg": {
     transform: "rotate(90deg)",
     marginInlineEnd: "1.5rem",
   },

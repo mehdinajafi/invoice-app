@@ -23,17 +23,19 @@ import {
   TableWrapper,
   Footer,
 } from "./Invoice.styles";
+import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
 
 interface IInvoiceComponent {
   invoice: IInvoice;
+  setFormIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Invoice: React.FC<IInvoiceComponent> = ({ invoice }) => {
+const Invoice: React.FC<IInvoiceComponent> = ({ invoice, setFormIsOpen }) => {
   return (
     <Wrapper>
       <Link href="/">
         <GoBackLink>
-          <img src="/images/icon-arrow-down.svg" />
+          <ArrowDownIcon />
           Go back
         </GoBackLink>
       </Link>
@@ -48,7 +50,9 @@ const Invoice: React.FC<IInvoiceComponent> = ({ invoice }) => {
         </StatusWrapper>
 
         <ButtonsWrapper>
-          <Button variant="light">Edit</Button>
+          <Button variant="light" onClick={() => setFormIsOpen(true)}>
+            Edit
+          </Button>
           <Button variant="danger">Delete</Button>
           {invoice.status !== "paid" && (
             <Button variant="primary">Mark As Paid</Button>

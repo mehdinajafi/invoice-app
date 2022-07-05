@@ -1,3 +1,10 @@
+export interface IItem {
+  name: string;
+  quantity: number;
+  price: number;
+  total: number;
+}
+
 interface IInvoice {
   id: string;
   createdAt: string;
@@ -19,12 +26,7 @@ interface IInvoice {
     postCode: string;
     country: string;
   };
-  items: {
-    name: string;
-    quantity: number;
-    price: number;
-    total: number;
-  }[];
+  items: IItem[];
   total: number;
 }
 

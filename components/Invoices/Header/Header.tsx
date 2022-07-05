@@ -8,7 +8,11 @@ import {
   PlusIconWrapper,
 } from "./Header.styles";
 
-const Header = () => {
+interface IHeader {
+  setFormIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<IHeader> = ({ setFormIsOpen }) => {
   return (
     <Wrapper>
       <TextWrapper>
@@ -18,7 +22,7 @@ const Header = () => {
 
       <Filter />
 
-      <NewInvoiceBtn>
+      <NewInvoiceBtn onClick={() => setFormIsOpen(true)}>
         <PlusIconWrapper>
           <img src="/images/icon-plus.svg" alt="plus" />
         </PlusIconWrapper>

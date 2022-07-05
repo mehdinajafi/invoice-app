@@ -6,6 +6,7 @@ const Wrapper = styled("aside", {
   justifyContent: "space-between",
   backgroundColor: "$ntrl-dk",
   borderRadius: "0",
+  zIndex: "$layerC",
 
   "@lg": {
     flexDirection: "column",
@@ -19,6 +20,7 @@ const OptionsWrapper = styled("div", {
 
   "@lg": {
     flexDirection: "column",
+    borderRadius: "0 0 20px 0",
   },
 });
 

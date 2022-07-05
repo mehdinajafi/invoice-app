@@ -6,6 +6,7 @@ const Wrapper = styled("div", {
   gridTemplateColumns: "1fr",
   gridTemplateRows: "80px 1fr",
   height: "100vh",
+  overflow: "hidden",
 
   "@lg": {
     gridTemplateColumns: "103px 1fr",
@@ -14,10 +15,8 @@ const Wrapper = styled("div", {
 });
 
 const Main = styled("main", {
-  width: "100%",
-  maxWidth: "45.625rem",
-  margin: "0 auto",
   padding: "2rem 1.5rem",
+  overflow: "auto",
 
   "@lg": {
     padding: "4.5rem 0",

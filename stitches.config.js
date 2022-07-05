@@ -50,7 +50,12 @@ export const {
     borderStyles: {},
     radii: {},
     shadows: {},
-    zIndices: {},
+    zIndices: {
+      bottomLayer: -1,
+      layerA: 1,
+      layerB: 2,
+      layerC: 3,
+    },
     transitions: {},
   },
   media: {
