@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import RootLayout from "layouts/Root";
+import React, { useEffect, useState } from "react";
 import Seo from "../components/Seo";
 import CreateInvoiceForm from "components/ModifyInvoice/CreateInvoiceForm";
 import Wrapper from "components/Home/Wrapper";
@@ -36,25 +35,23 @@ export default function Index() {
   };
 
   return (
-    <RootLayout>
+    <Wrapper>
       <Seo title="Invoice App" />
 
+      <Header
+        setFormIsOpen={setFormIsOpen}
+        setFilter={toggleFilter}
+        filter={filter}
+        totalFiltredInvoices={filteredInvoices.length}
+      />
+
+      <InvoicesList>
+        {filteredInvoices.map((invoice) => (
+          <InvoiceItem key={invoice.id} invoice={invoice} />
+        ))}
+      </InvoicesList>
+
       <CreateInvoiceForm isOpen={formIsOpen} setFormIsOpen={setFormIsOpen} />
-
-      <Wrapper>
-        <Header
-          setFormIsOpen={setFormIsOpen}
-          setFilter={toggleFilter}
-          filter={filter}
-          totalFiltredInvoices={filteredInvoices.length}
-        />
-
-        <InvoicesList>
-          {filteredInvoices.map((invoice) => (
-            <InvoiceItem key={invoice.id} invoice={invoice} />
-          ))}
-        </InvoicesList>
-      </Wrapper>
-    </RootLayout>
+    </Wrapper>
   );
 }

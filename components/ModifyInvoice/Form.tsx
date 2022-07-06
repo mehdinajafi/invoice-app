@@ -20,7 +20,7 @@ const Wrapper = styled(motion.div, {
 });
 
 const StyledForm = styled(FormikForm, {
-  padding: "2rem 1rem 0px 1.5rem",
+  padding: "2rem 1rem 0px 1rem",
   width: "100vw",
   height: "calc(100vh - 5rem)",
   maxWidth: "40rem",
@@ -42,11 +42,16 @@ const StyledForm = styled(FormikForm, {
 const animationVariants = {
   hidden: {
     x: "-100%",
-    transition: { type: "spring", duration: 0.75, damping: 20 },
+    transition: { type: "spring", duration: 0.75, ease: "easeIn" },
   },
   visible: {
     x: 0,
-    transition: { type: "spring", duration: 0.75, damping: 20 },
+    transition: {
+      type: "spring",
+      duration: 0.75,
+      ease: "easeOut",
+      damping: 18,
+    },
   },
 };
 

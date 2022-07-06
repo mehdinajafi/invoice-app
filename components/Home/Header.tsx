@@ -2,8 +2,9 @@ import Filter from "./Filter";
 import { styled } from "stitches-config";
 import { Filter as FilterType } from "../../pages/index";
 import IconPlus from "../../public/images/icon-plus.svg";
+import { motion } from "framer-motion";
 
-const Wrapper = styled("div", {
+const Wrapper = styled(motion.div, {
   display: "flex",
   alignItems: "center",
   marginBottom: "4rem",
@@ -70,6 +71,21 @@ const PlusIconWrapper = styled("div", {
   backgroundColor: "White",
 });
 
+const animation = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
 interface IHeader {
   filter: FilterType;
   totalFiltredInvoices: number;
@@ -84,7 +100,7 @@ const Header: React.FC<IHeader> = ({
   setFormIsOpen,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper variants={animation} initial="hidden" animate="visible">
       <TextWrapper>
         <Title>Invoices</Title>
         <SubHeading>

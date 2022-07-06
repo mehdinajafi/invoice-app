@@ -1,11 +1,12 @@
 import format from "date-fns/format";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { styled } from "stitches-config";
 import IInvoice from "types/invoice";
 import { addCommas } from "utilities/misc";
 import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
 
-const Wrapper = styled("a", {
+const Wrapper = styled(motion.a, {
   display: "grid",
   gridTemplateRows: "max-content 1fr",
   backgroundColor: "White",
@@ -138,6 +139,18 @@ const GoToInvoiceIcon = styled("div", {
   },
 });
 
+const animation = {
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
 interface IInvoiceComponent {
   invoice: IInvoice;
 }
@@ -145,7 +158,7 @@ interface IInvoiceComponent {
 const InvoiceItem: React.FC<IInvoiceComponent> = (props) => {
   return (
     <Link href={`/invoice/${props.invoice.id}`}>
-      <Wrapper>
+      <Wrapper variants={animation}>
         <InvoiceId>
           <span>#</span>
           {props.invoice.id}

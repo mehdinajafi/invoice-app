@@ -20,7 +20,7 @@ const Index: React.FC<IIndex> = ({ id }) => {
   const [formIsOpen, setFormIsOpen] = useState(false);
 
   return (
-    <RootLayout>
+    <React.Fragment>
       {invoice && (
         <React.Fragment>
           <Seo title={`Invoice | #${invoice.id}`} />
@@ -42,7 +42,7 @@ const Index: React.FC<IIndex> = ({ id }) => {
           />
         </React.Fragment>
       )}
-    </RootLayout>
+    </React.Fragment>
   );
 };
 
