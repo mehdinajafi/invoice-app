@@ -7,13 +7,13 @@ export interface IItem {
 
 interface IInvoice {
   id: string;
-  createdAt: string;
+  createdAt: Date | string;
   paymentDue: string;
   description: string;
-  paymentTerms: number;
+  paymentTerms: string;
   clientName: string;
   clientEmail: string;
-  status: "paid";
+  status: "paid" | "draft" | "pending";
   senderAddress: {
     street: string;
     city: string;

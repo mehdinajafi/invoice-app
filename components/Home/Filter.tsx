@@ -1,6 +1,9 @@
 import { Menu, MenuList, MenuButton, MenuItem } from "@reach/menu-button";
 import React from "react";
 import { keyframes, styled } from "stitches-config";
+import { Filter as FilterType } from "../../pages/index";
+import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
+import CheckIcon from "../../public/images/icon-check.svg";
 
 const Button = styled(MenuButton, {
   display: "flex",
@@ -13,14 +16,21 @@ const Button = styled(MenuButton, {
   color: "$ntrl-dkr",
   cursor: "pointer",
 
-  "& img": {
+  "& svg": {
     marginInlineStart: "1rem",
     transition: "transform 400ms",
+  },
+  "& span": {
+    display: "none",
+
+    "@sm": {
+      display: "inline",
+    },
   },
   variants: {
     isExpanded: {
       true: {
-        "& img": {
+        "& svg": {
           transform: "rotate(-180deg)",
         },
       },
@@ -40,6 +50,7 @@ const slideDown = keyframes({
 });
 
 const List = styled(MenuList, {
+  backgroundColor: "hsl(0, 0%, 100%)",
   boxShadow: "rgb(72 84 159 / 25%) 0px 10px 20px",
   width: "12rem",
   padding: "1.5rem",
@@ -52,10 +63,6 @@ const List = styled(MenuList, {
   "&[data-reach-menu-list] , &[data-reach-menu-items]": {
     animation: `${slideDown} 200ms ease`,
   },
-});
-
-const Item = styled(MenuItem, {
-  "&[data-selected]": {},
 });
 
 const LabelItem = styled("label", {
@@ -76,10 +83,10 @@ const LabelItem = styled("label", {
     fontWeight: 700,
     textTransform: "uppercase",
   },
-  "& input + span img": {
+  "& input + span svg": {
     display: "none",
   },
-  "& input:checked + span img": {
+  "& input:checked + span svg": {
     display: "inline",
   },
   "& input:checked + span": {
@@ -98,61 +105,64 @@ const Checkbox = styled("span", {
   borderRadius: "2px",
   backgroundColor: "$primary-ltr",
 
-  "& img": {
+  "& svg": {
     width: "10px",
     height: "7px",
   },
 });
 
-const Filter = () => {
+interface IItem {
+  label: string;
+  filter: FilterType;
+  onSelect: () => void;
+}
+
+const Item: React.FC<IItem> = ({ label, filter, onSelect }) => {
+  return (
+    <MenuItem onSelect={() => {}}>
+      <LabelItem>
+        <input type="checkbox" checked={label === filter} onChange={onSelect} />
+
+        <Checkbox>
+          <CheckIcon />
+        </Checkbox>
+
+        <span>{label}</span>
+      </LabelItem>
+    </MenuItem>
+  );
+};
+
+interface IFilter {
+  filter: FilterType;
+  setFilter: (filterBy: FilterType) => void;
+}
+
+const Filter: React.FC<IFilter> = ({ filter, setFilter }) => {
   return (
     <Menu>
       {({ isExpanded }: { isExpanded: boolean }) => (
         <React.Fragment>
           <Button isExpanded={isExpanded}>
-            Filter by status{" "}
-            <img
-              alt=""
-              src="/images/icon-arrow-down.svg"
-              width={11}
-              height={7}
-            />
+            Filter <span>by status</span> <ArrowDownIcon />
           </Button>
 
           <List>
-            <Item onSelect={() => {}}>
-              <LabelItem>
-                <input type="checkbox" />
-
-                <Checkbox>
-                  <img src="/images/icon-check.svg" width={10} height={6} />
-                </Checkbox>
-
-                <span>paid</span>
-              </LabelItem>
-            </Item>
-            <Item onSelect={() => {}}>
-              <LabelItem>
-                <input type="checkbox" />
-
-                <Checkbox>
-                  <img src="/images/icon-check.svg" width={10} height={6} />
-                </Checkbox>
-
-                <span>pending</span>
-              </LabelItem>
-            </Item>
-            <Item onSelect={() => {}}>
-              <LabelItem>
-                <input type="checkbox" />
-
-                <Checkbox>
-                  <img src="/images/icon-check.svg" width={10} height={6} />
-                </Checkbox>
-
-                <span>draft</span>
-              </LabelItem>
-            </Item>
+            <Item
+              label="paid"
+              filter={filter}
+              onSelect={() => setFilter("paid")}
+            />
+            <Item
+              label="pending"
+              filter={filter}
+              onSelect={() => setFilter("pending")}
+            />
+            <Item
+              label="draft"
+              filter={filter}
+              onSelect={() => setFilter("draft")}
+            />
           </List>
         </React.Fragment>
       )}

@@ -9,6 +9,10 @@ import Form from "./Form";
 import Header from "./Header";
 import IInvoice from "types/invoice";
 import { validationSchema } from "../../data/form";
+import { useAppDispatch } from "store/hooks";
+import { FormValues } from "types/form";
+import { editInvoice } from "store/InvoicesSlice";
+import { createInvoice } from "utilities/form";
 
 const Buttons = styled("div", {
   display: "flex",
@@ -29,7 +33,20 @@ const EditInvoiceForm: React.FC<IEditInvoiceForm> = ({
   invoice,
   setFormIsOpen,
 }) => {
-  const onSubmit = () => {};
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (values: FormValues) => {
+    dispatch(
+      editInvoice({
+        id: invoice.id,
+        changes: {
+          id: invoice.id,
+          ...createInvoice(invoice.status, values),
+        },
+      })
+    );
+    setFormIsOpen(false);
+  };
 
   return (
     <AnimatePresence>
@@ -51,10 +68,14 @@ const EditInvoiceForm: React.FC<IEditInvoiceForm> = ({
                 <Fields />
 
                 <Buttons>
-                  <Button type="button" variant="light">
+                  <Button
+                    type="button"
+                    variant="light"
+                    onClick={() => setFormIsOpen(false)}
+                  >
                     Cancel
                   </Button>
-                  <Button type="button" variant="primary">
+                  <Button type="submit" variant="primary">
                     Save Changes
                   </Button>
                 </Buttons>

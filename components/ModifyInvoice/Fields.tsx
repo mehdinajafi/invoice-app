@@ -1,4 +1,6 @@
+import { useFormikContext } from "formik";
 import { styled } from "stitches-config";
+import { reduceErrors } from "utilities/form";
 import DatePicker from "./DatePicker";
 import Input from "./Input";
 import Items from "./Items";
@@ -67,6 +69,17 @@ const OtherFieldWrapper = styled("fieldset", {
   },
 });
 
+const ErrorsList = styled("div", {
+  marginBlockStart: "-1rem",
+});
+
+const Error = styled("div", {
+  color: "$danger",
+  fontFamily: "$spartan",
+  fontSize: "$xxs",
+  fontWeight: "bold",
+});
+
 const dropdownOptions = [
   { name: "Net 1 Day", value: 1 },
   { name: "Net 7 Days", value: 7 },
@@ -75,6 +88,8 @@ const dropdownOptions = [
 ];
 
 const Fields = () => {
+  const formik = useFormikContext();
+
   return (
     <Wrapper>
       <Fieldset>
@@ -114,6 +129,14 @@ const Fields = () => {
       </OtherFieldWrapper>
 
       <Items />
+
+      {formik.submitCount > 0 && formik.errors && (
+        <ErrorsList>
+          {reduceErrors(formik.errors).map((error) => (
+            <Error key={error}>{error}</Error>
+          ))}
+        </ErrorsList>
+      )}
     </Wrapper>
   );
 };

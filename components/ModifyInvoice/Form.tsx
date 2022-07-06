@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Form as FormikForm } from "formik";
 import { styled } from "stitches-config";
 
 const Wrapper = styled(motion.div, {
@@ -18,7 +19,7 @@ const Wrapper = styled(motion.div, {
   },
 });
 
-const StyledForm = styled("form", {
+const StyledForm = styled(FormikForm, {
   padding: "2rem 1rem 0px 1.5rem",
   width: "100vw",
   height: "calc(100vh - 5rem)",

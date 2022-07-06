@@ -8,6 +8,11 @@ import Fields from "./Fields";
 import Form from "./Form";
 import Header from "./Header";
 import { initialValues, validationSchema } from "../../data/form";
+import { addOne } from "store/InvoicesSlice";
+import { createInvoice } from "utilities/form";
+import { generateUniqueId } from "utilities/id";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { FormValues } from "types/form";
 
 const Buttons = styled("div", {
   display: "flex",
@@ -26,17 +31,38 @@ const CreateInvoiceForm: React.FC<ICreateInvoiceForm> = ({
   isOpen,
   setFormIsOpen,
 }) => {
-  const onSubmit = () => {};
+  const invoicesIds = useAppSelector((state) => state.invoices.ids);
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (values: FormValues) => {
+    dispatch(
+      addOne({
+        id: generateUniqueId(invoicesIds),
+        ...createInvoice("paid", values),
+      })
+    );
+    setFormIsOpen(false);
+  };
+
+  const saveAsDraft = (values: FormValues) => {
+    dispatch(
+      addOne({
+        id: generateUniqueId(invoicesIds),
+        ...createInvoice("draft", values),
+      })
+    );
+    setFormIsOpen(false);
+  };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <Formik
           onSubmit={onSubmit}
-          initialValues={initialValues}
+          initialValues={initialValues as FormValues}
           validationSchema={validationSchema}
         >
-          {() => (
+          {({ values }) => (
             <React.Fragment>
               <Backdrop setFormIsOpen={setFormIsOpen} />
               <Form>
@@ -49,13 +75,18 @@ const CreateInvoiceForm: React.FC<ICreateInvoiceForm> = ({
                     type="button"
                     variant="light"
                     css={{ marginRight: "auto" }}
+                    onClick={() => setFormIsOpen(false)}
                   >
                     Discard
                   </Button>
-                  <Button type="button" variant="dark">
+                  <Button
+                    type="button"
+                    variant="dark"
+                    onClick={() => saveAsDraft(values)}
+                  >
                     Save as Draft
                   </Button>
-                  <Button type="button" variant="primary">
+                  <Button type="submit" variant="primary">
                     Save & Send
                   </Button>
                 </Buttons>

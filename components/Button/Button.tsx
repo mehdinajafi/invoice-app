@@ -9,6 +9,7 @@ const Button = styled("button", {
   fontWeight: 700,
   transition: "background 0.3s ease, color 0.3s ease",
   cursor: "pointer",
+  whiteSpace: "nowrap",
 
   variants: {
     variant: {

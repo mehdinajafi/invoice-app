@@ -1,4 +1,9 @@
+import format from "date-fns/format";
+import Link from "next/link";
 import { styled } from "stitches-config";
+import IInvoice from "types/invoice";
+import { addCommas } from "utilities/misc";
+import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
 
 const Wrapper = styled("a", {
   display: "grid",
@@ -8,6 +13,7 @@ const Wrapper = styled("a", {
   borderRadius: "8px",
   fontFamily: "$spartan",
   padding: "1rem 1.5rem",
+  transition: "border-color 200ms",
   cursor: "pointer",
 
   "@lg": {
@@ -50,7 +56,12 @@ const InvoiceDate = styled("div", {
   fontSize: "$xs",
   color: "$ntrl-ltr",
   marginInlineEnd: "2.5rem",
+  marginBlockEnd: "0.5rem",
   whiteSpace: "nowrap",
+
+  "@lg": {
+    marginBlockEnd: "0",
+  },
 });
 
 const InvoicePrice = styled("div", {
@@ -60,6 +71,7 @@ const InvoicePrice = styled("div", {
 
 const InvoiceStatus = styled("div", {
   gridArea: "2 / 2 / 4 / 3",
+  alignSelf: "end",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -126,12 +138,35 @@ const GoToInvoiceIcon = styled("div", {
   },
 });
 
-export {
-  Wrapper,
-  InvoiceId,
-  InvoiceClient,
-  InvoiceDate,
-  InvoicePrice,
-  InvoiceStatus,
-  GoToInvoiceIcon,
+interface IInvoiceComponent {
+  invoice: IInvoice;
+}
+
+const InvoiceItem: React.FC<IInvoiceComponent> = (props) => {
+  return (
+    <Link href={`/invoice/${props.invoice.id}`}>
+      <Wrapper>
+        <InvoiceId>
+          <span>#</span>
+          {props.invoice.id}
+        </InvoiceId>
+        <InvoiceDate>
+          Due {format(new Date(props.invoice.createdAt), "MM LLL yyyy")}
+        </InvoiceDate>
+        <InvoiceClient>{props.invoice.clientName}</InvoiceClient>
+
+        <InvoicePrice>${addCommas(props.invoice.total)}</InvoicePrice>
+
+        <InvoiceStatus status={props.invoice.status}>
+          <span></span>
+          <span>{props.invoice.status}</span>
+        </InvoiceStatus>
+        <GoToInvoiceIcon>
+          <ArrowDownIcon />
+        </GoToInvoiceIcon>
+      </Wrapper>
+    </Link>
+  );
 };
+
+export default InvoiceItem;

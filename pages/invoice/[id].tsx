@@ -1,30 +1,47 @@
-import { Invoice } from "components/Invoice";
 import Seo from "components/Seo";
 import RootLayout from "layouts/Root";
 import { GetServerSidePropsContext } from "next";
-import IInvoice from "types/invoice";
-import invoices from "../../data/data.json";
 import EditInvoiceForm from "../../components/ModifyInvoice/EditInvoiceForm";
-import { useState } from "react";
+import React, { useState } from "react";
+import Wrapper from "components/Invoice/Wrapper";
+import InvoiceHeader from "components/Invoice/InvoiceHeader";
+import InvoiceBody from "components/Invoice/InvoiceBody";
+import InvoiceFooter from "components/Invoice/InvoiceFooter";
+import HomeLink from "components/Invoice/HomeLink";
+import { selectById } from "store/InvoicesSlice";
+import { useAppSelector } from "store/hooks";
 
 interface IIndex {
-  invoice: IInvoice;
+  id: string;
 }
 
-const Index: React.FC<IIndex> = ({ invoice }) => {
+const Index: React.FC<IIndex> = ({ id }) => {
+  const invoice = useAppSelector((state) => selectById(state.invoices, id));
   const [formIsOpen, setFormIsOpen] = useState(false);
 
   return (
     <RootLayout>
-      <Seo title={`Invoice | #${invoice.id}`} />
+      {invoice && (
+        <React.Fragment>
+          <Seo title={`Invoice | #${invoice.id}`} />
 
-      <Invoice invoice={invoice} setFormIsOpen={setFormIsOpen} />
+          <Wrapper>
+            <HomeLink />
 
-      <EditInvoiceForm
-        isOpen={formIsOpen}
-        setFormIsOpen={setFormIsOpen}
-        invoice={invoice}
-      />
+            <InvoiceHeader setFormIsOpen={setFormIsOpen} invoice={invoice} />
+
+            <InvoiceBody invoice={invoice} />
+
+            <InvoiceFooter invoice={invoice} setFormIsOpen={setFormIsOpen} />
+          </Wrapper>
+
+          <EditInvoiceForm
+            isOpen={formIsOpen}
+            setFormIsOpen={setFormIsOpen}
+            invoice={invoice}
+          />
+        </React.Fragment>
+      )}
     </RootLayout>
   );
 };
@@ -33,11 +50,10 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const id = context.query.id;
-  const invoice = invoices.find((invoice) => invoice.id === id);
 
   return {
     props: {
-      invoice: invoice,
+      id,
     },
   };
 };
