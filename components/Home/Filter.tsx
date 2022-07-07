@@ -1,6 +1,6 @@
 import { Menu, MenuList, MenuButton, MenuItem } from "@reach/menu-button";
 import React from "react";
-import { keyframes, styled } from "stitches-config";
+import { dark, keyframes, styled } from "stitches-config";
 import { Filter as FilterType } from "../../pages/index";
 import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
 import CheckIcon from "../../public/images/icon-check.svg";
@@ -50,7 +50,7 @@ const slideDown = keyframes({
 });
 
 const List = styled(MenuList, {
-  backgroundColor: "hsl(0, 0%, 100%)",
+  backgroundColor: "$subtle-floating",
   boxShadow: "rgb(72 84 159 / 25%) 0px 10px 20px",
   width: "12rem",
   padding: "1.5rem",
@@ -59,6 +59,10 @@ const List = styled(MenuList, {
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
+
+  [`.${dark} &`]: {
+    boxShadow: "rgb(72 84 159 / 10%) 0px 10px 20px",
+  },
 
   "&[data-reach-menu-list] , &[data-reach-menu-items]": {
     animation: `${slideDown} 200ms ease`,
@@ -103,7 +107,7 @@ const Checkbox = styled("span", {
   marginInlineEnd: "1rem",
   border: "1px solid transparent",
   borderRadius: "2px",
-  backgroundColor: "$primary-ltr",
+  backgroundColor: "$ntrl-ltst",
 
   "& svg": {
     width: "10px",

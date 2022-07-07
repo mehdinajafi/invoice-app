@@ -64,6 +64,10 @@ const OtherFieldWrapper = styled("fieldset", {
   border: "none",
   padding: 0,
 
+  "& > :nth-child(2)": {
+    height: "75px",
+  },
+
   "& > :nth-child(3)": {
     gridColumn: "1 / -1",
   },

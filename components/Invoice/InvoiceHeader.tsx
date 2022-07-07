@@ -13,7 +13,7 @@ const Wrapper = styled("div", {
   marginBlockEnd: "1.5rem",
   borderRadius: "8px",
   boxShadow: "rgb(72 84 159 / 10%) 0px 10px 10px -10px",
-  backgroundColor: "White",
+  backgroundColor: "$subtle-floating",
 });
 
 const StatusWrapper = styled("div", {
@@ -47,13 +47,14 @@ const InvoiceStatus = styled("div", {
     width: "0.5rem",
     height: "0.5rem",
     marginInlineEnd: "0.5rem",
+    marginBlockEnd: "2px",
     borderRadius: "50%",
   },
 
   variants: {
     status: {
       paid: {
-        backgroundColor: "$success-lt",
+        backgroundColor: "$success-background",
         color: "$success",
 
         "&::before": {
@@ -61,7 +62,7 @@ const InvoiceStatus = styled("div", {
         },
       },
       pending: {
-        backgroundColor: "$warning-lt",
+        backgroundColor: "$warning-background",
         color: "$warning",
 
         "&::before": {
@@ -69,11 +70,11 @@ const InvoiceStatus = styled("div", {
         },
       },
       draft: {
-        backgroundColor: "rgb(55 59 83 / 6%)",
-        color: "$ntrl-dk",
+        backgroundColor: "$muted",
+        color: "$ntrl-dkr",
 
         "&::before": {
-          backgroundColor: "$ntrl-dk",
+          backgroundColor: "$ntrl-dkr",
         },
       },
     },
@@ -108,7 +109,10 @@ const InvoiceHeader: React.FC<IHeader> = ({ invoice, setFormIsOpen }) => {
       <StatusWrapper>
         <span>Status</span>
 
-        <InvoiceStatus status={invoice.status}>{invoice.status}</InvoiceStatus>
+        <InvoiceStatus status={invoice.status}>
+          <span></span>
+          {invoice.status}
+        </InvoiceStatus>
       </StatusWrapper>
 
       <ButtonsWrapper>

@@ -5,7 +5,7 @@ const StyledBackdrop = styled(motion.div, {
   position: "fixed",
   inset: 0,
   backgroundColor: "hsla(0, 0%, 0%, 0.5)",
-  zIndex: "$layerA",
+  zIndex: "$layer-a",
 });
 
 const variants = {

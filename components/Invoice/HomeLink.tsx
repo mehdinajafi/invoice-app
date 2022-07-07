@@ -12,10 +12,11 @@ const GoBackLink = styled("a", {
   fontFamily: "$spartan",
   fontSize: "$xs",
   cursor: "pointer",
+  color: "$ntrl-dkr",
   transition: "color 200ms",
 
   "&:hover": {
-    color: "$ntrl-lt",
+    color: "$ntrl",
   },
 
   "& svg": {

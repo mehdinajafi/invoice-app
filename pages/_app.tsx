@@ -3,9 +3,11 @@ import { AnimatePresence } from "framer-motion";
 import RootLayout from "layouts/Root";
 import { Provider } from "react-redux";
 import { store } from "store";
-import "../styles/globals.css";
+import { globalStyles } from "stitches-config";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
+  globalStyles();
+
   return (
     <Provider store={store}>
       <RootLayout>

@@ -4,6 +4,7 @@ import { styled } from "stitches-config";
 const Wrapper = styled("div", {
   display: "flex",
   flexDirection: "column",
+  justifyContent: "space-between",
   gap: "0.625rem",
 });
 
@@ -25,16 +26,17 @@ const SelectWrapper = styled("div", {
 });
 
 const StyledSelect = styled("select", {
-  border: "1px solid $primary-ltr",
+  border: "1px solid $ntrl-ltst",
   borderRadius: "4px",
   width: "100%",
+  height: "100%",
   padding: "1rem 1.25rem",
   fontFamily: "$spartan",
   fontSize: "$xs",
   fontWeight: "bold",
   appearance: "none",
   outline: "none",
-  backgroundColor: "hsl(0, 0%, 100%)",
+  backgroundColor: "$subtle-floating",
 
   "&:focus": {
     borderColor: "$primary",

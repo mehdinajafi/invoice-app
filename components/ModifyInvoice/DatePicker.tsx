@@ -23,12 +23,13 @@ const Button = styled("button", {
   justifyContent: "space-between",
   width: "100%",
   padding: "1rem 1.5rem",
-  border: "1px solid $primary-ltr",
+  border: "1px solid $ntrl-ltst",
   borderRadius: "4px",
-  backgroundColor: "hsl(0, 0%, 100%)",
+  backgroundColor: "$subtle-floating",
   fontFamily: "$spartan",
   fontSize: "$xs",
   fontWeight: "bold",
+  cursor: "pointer",
 });
 
 const CustumInput = forwardRef<HTMLButtonElement, any>(

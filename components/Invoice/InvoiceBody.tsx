@@ -11,7 +11,7 @@ const Wrapper = styled("div", {
   marginBlockEnd: "1.5rem",
   borderRadius: "8px",
   boxShadow: "rgb(72 84 159 / 10%) 0px 10px 10px -10px",
-  backgroundColor: "White",
+  backgroundColor: "$subtle-floating",
 
   "@lg": {
     gridTemplateColumns: "1fr 1fr 1fr",

@@ -1,4 +1,4 @@
-import { styled } from "stitches-config";
+import { dark, styled } from "stitches-config";
 import IInvoice from "types/invoice";
 import { addCommas } from "utilities/misc";
 
@@ -8,7 +8,7 @@ const TableWrapper = styled("div", {
   overflow: "hidden",
 
   "& table": {
-    backgroundColor: "hsl(228, 71%, 99%)",
+    backgroundColor: "$muted",
     width: "100%",
     paddingTop: "2rem",
     borderSpacing: "0",
@@ -83,6 +83,10 @@ const TableWrapper = styled("div", {
     "& tfoot": {
       backgroundColor: "$ntrl-dk",
       color: "White",
+
+      [`.${dark} &`]: {
+        backgroundColor: "hsl(228, 29%, 7%)",
+      },
 
       "& tr": {
         "& td": {

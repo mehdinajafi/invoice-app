@@ -30,7 +30,7 @@ const AddNewItemButton = styled(Button, {
   inlineSize: "100%",
 
   "&:hover": {
-    backgroundColor: "$primary-ltr",
+    backgroundColor: "$ntrl-ltst",
   },
 });
 

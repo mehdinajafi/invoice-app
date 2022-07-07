@@ -11,7 +11,7 @@ const Wrapper = styled("div", {
   justifyContent: "flex-end",
   alignItems: "center",
   gap: "0.5rem",
-  backgroundColor: "White",
+  backgroundColor: "$subtle-floating",
   padding: "0.5rem",
   borderRadius: "8px",
   boxShadow: "rgb(72 84 159 / 10%) 0px 10px 10px -10px",

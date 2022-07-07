@@ -26,24 +26,23 @@ const Button = styled("button", {
         color: "White",
 
         "&:hover": {
-          backgroundColor: "$danger-lt",
+          backgroundColor: "$danger-background",
         },
       },
       light: {
-        "$$light-bg": "hsl(228, 71%, 99%)",
-        backgroundColor: "$$light-bg",
+        backgroundColor: "$muted",
         color: "$ntrl-lt",
 
         "&:hover": {
-          backgroundColor: "hsl(231, 73%, 93%)",
+          backgroundColor: "$muted-dk",
         },
       },
       dark: {
-        backgroundColor: "hsl(230, 21%, 27%)",
+        backgroundColor: "$dark",
         color: "$ntrl-ltr",
 
         "&:hover": {
-          backgroundColor: "$ntrl-dkr",
+          backgroundColor: "$dark-dk",
         },
       },
     },

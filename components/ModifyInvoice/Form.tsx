@@ -7,8 +7,8 @@ const Wrapper = styled(motion.div, {
   position: "fixed",
   top: "80px",
   left: 0,
-  zIndex: "$layerB",
-  backgroundColor: "hsl(0, 0%, 100%)",
+  zIndex: "$layer-b",
+  backgroundColor: "$background",
 
   "@sm": {
     borderRadius: "0 20px 20px 0",

@@ -9,7 +9,7 @@ import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
 const Wrapper = styled(motion.a, {
   display: "grid",
   gridTemplateRows: "max-content 1fr",
-  backgroundColor: "White",
+  backgroundColor: "$subtle-floating",
   border: "1px solid transparent",
   borderRadius: "8px",
   fontFamily: "$spartan",
@@ -68,6 +68,7 @@ const InvoiceDate = styled("div", {
 const InvoicePrice = styled("div", {
   fontSize: "$base",
   fontWeight: 700,
+  color: "$ntrl-dkr",
 });
 
 const InvoiceStatus = styled("div", {
@@ -90,37 +91,39 @@ const InvoiceStatus = styled("div", {
     marginInlineEnd: "1.25rem",
   },
 
-  "& span:first-child": {
+  "&::before": {
+    content: " ",
     width: "0.5rem",
     height: "0.5rem",
     marginInlineEnd: "0.5rem",
+    marginBlockEnd: "2px",
     borderRadius: "50%",
   },
 
   variants: {
     status: {
       paid: {
-        backgroundColor: "$success-lt",
+        backgroundColor: "$success-background",
         color: "$success",
 
-        "& span:first-child": {
+        "&::before": {
           backgroundColor: "$success",
         },
       },
       pending: {
-        backgroundColor: "$warning-lt",
+        backgroundColor: "$warning-background",
         color: "$warning",
 
-        "& span:first-child": {
+        "&::before": {
           backgroundColor: "$warning",
         },
       },
       draft: {
-        backgroundColor: "rgb(55 59 83 / 6%)",
-        color: "$ntrl-dk",
+        backgroundColor: "$muted",
+        color: "$ntrl-dkr",
 
-        "& span:first-child": {
-          backgroundColor: "$ntrl-dk",
+        "&::before": {
+          backgroundColor: "$ntrl-dkr",
         },
       },
     },
@@ -171,8 +174,7 @@ const InvoiceItem: React.FC<IInvoiceComponent> = (props) => {
         <InvoicePrice>${addCommas(props.invoice.total)}</InvoicePrice>
 
         <InvoiceStatus status={props.invoice.status}>
-          <span></span>
-          <span>{props.invoice.status}</span>
+          {props.invoice.status}
         </InvoiceStatus>
         <GoToInvoiceIcon>
           <ArrowDownIcon />

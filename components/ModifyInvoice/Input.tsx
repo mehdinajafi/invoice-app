@@ -5,6 +5,10 @@ const Wrapper = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "0.625rem",
+
+  "&:focus-within label": {
+    color: "$ntrl-ltr",
+  },
 });
 
 const Label = styled("label", {
@@ -22,7 +26,7 @@ const Label = styled("label", {
 });
 
 const StyledInput = styled("input", {
-  border: "1px solid $primary-ltr",
+  border: "1px solid $ntrl-ltst",
   borderRadius: "4px",
   outline: "none",
   fontFamily: "$spartan",
@@ -32,6 +36,7 @@ const StyledInput = styled("input", {
   padding: "1rem 1.25rem",
   width: "100%",
   transition: "border-color 200ms",
+  backgroundColor: "$subtle-floating",
 
   "&:focus": {
     border: "1px solid $primary",

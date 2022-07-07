@@ -18,6 +18,7 @@ const Title = styled("h1", {
   fontFamily: "$spartan",
   fontSize: "$xl",
   fontWeight: 700,
+  color: "$ntrl-dkr",
 
   "@sm": {
     fontSize: "2rem",
