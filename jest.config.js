@@ -6,6 +6,12 @@ const createJestConfig = nextJest({
 
 const customJestConfig = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  moduleNameMapper: {
+    // '^@/components/(.*)$': '<rootDir>/components/$1',
+
+    // '^@/pages/(.*)$': '<rootDir>/pages/$1',
+    "stitches-config": "<rootDir>/stitches.config.js",
+  },
   testEnvironment: "jest-environment-jsdom",
 };
 
