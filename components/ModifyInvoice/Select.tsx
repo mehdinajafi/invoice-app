@@ -57,9 +57,9 @@ const Select: React.FC<ISelect> = ({ options, name, label }) => {
 
   return (
     <Wrapper>
-      <Label>{label}</Label>
+      <Label htmlFor={label}>{label}</Label>
       <SelectWrapper>
-        <StyledSelect {...field}>
+        <StyledSelect id={label} {...field}>
           {options.map((option) => (
             <option key={option.name} value={option.value}>
               {option.name}

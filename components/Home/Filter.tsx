@@ -1,9 +1,9 @@
 import { Menu, MenuList, MenuButton, MenuItem } from "@reach/menu-button";
 import React from "react";
 import { dark, keyframes, styled } from "stitches-config";
-import { Filter as FilterType } from "../../pages/index";
-import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
-import CheckIcon from "../../public/images/icon-check.svg";
+import { Filter as FilterType } from "@/pages/index";
+import ArrowDownIcon from "@/public/images/icon-arrow-down.svg";
+import CheckIcon from "@/public/images/icon-check.svg";
 
 const Button = styled(MenuButton, {
   display: "flex",

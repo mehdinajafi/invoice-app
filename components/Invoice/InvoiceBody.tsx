@@ -1,6 +1,6 @@
 import format from "date-fns/format";
 import { styled } from "stitches-config";
-import IInvoice from "types/invoice";
+import IInvoice from "@/types/invoice";
 import ItemsTable from "./ItemsTable";
 
 const Wrapper = styled("div", {

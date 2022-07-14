@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import { styled } from "stitches-config";
-import { reduceErrors } from "utilities/form";
+import { reduceErrors } from "@/utilities/form";
 import DatePicker from "./DatePicker";
 import Input from "./Input";
 import Items from "./Items";

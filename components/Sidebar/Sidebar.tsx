@@ -1,8 +1,8 @@
-import { Avatar } from "components/Avatar";
+import { Avatar } from "@/components/Avatar";
 import Image from "next/image";
 import { styled } from "stitches-config";
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { setTheme } from "store/ThemeSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setTheme } from "@/store/ThemeSlice";
 import Logo from "./Logo";
 
 const Wrapper = styled("aside", {

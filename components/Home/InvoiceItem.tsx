@@ -2,9 +2,9 @@ import format from "date-fns/format";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { styled } from "stitches-config";
-import IInvoice from "types/invoice";
-import { addCommas } from "utilities/misc";
-import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
+import IInvoice from "@/types/invoice";
+import { addCommas } from "@/utilities/misc";
+import ArrowDownIcon from "@/public/images/icon-arrow-down.svg";
 
 const Wrapper = styled(motion.a, {
   display: "grid",

@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { styled } from "stitches-config";
 import { FieldArrayRenderProps, useFormikContext } from "formik";
 import Input from "./Input";
-import IInvoice from "../../types/invoice";
-import DeleteIcon from "../../public/images/icon-delete.svg";
+import IInvoice from "@/types/invoice";
+import DeleteIcon from "@/public/images/icon-delete.svg";
 
 const Wrapper = styled("div", {
   display: "grid",

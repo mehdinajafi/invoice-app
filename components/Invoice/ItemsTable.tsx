@@ -1,6 +1,6 @@
 import { dark, styled } from "stitches-config";
-import IInvoice from "types/invoice";
-import { addCommas } from "utilities/misc";
+import IInvoice from "@/types/invoice";
+import { addCommas } from "@/utilities/misc";
 
 const TableWrapper = styled("div", {
   gridArea: "6 / 1 / 7 / -1",

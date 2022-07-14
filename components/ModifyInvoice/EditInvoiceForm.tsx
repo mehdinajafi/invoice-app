@@ -2,17 +2,17 @@ import React from "react";
 import { Formik } from "formik";
 import { AnimatePresence } from "framer-motion";
 import { styled } from "stitches-config";
-import { Button } from "components/Button";
+import { Button } from "@/components/Button";
 import Backdrop from "./Backdrop";
 import Fields from "./Fields";
 import Form from "./Form";
 import Header from "./Header";
-import IInvoice from "types/invoice";
-import { validationSchema } from "../../data/form";
-import { useAppDispatch } from "store/hooks";
-import { FormValues } from "types/form";
-import { editInvoice } from "store/InvoicesSlice";
-import { createInvoice } from "utilities/form";
+import IInvoice from "@/types/invoice";
+import { validationSchema } from "@/data/form";
+import { useAppDispatch } from "@/store/hooks";
+import { FormValues } from "@/types/form";
+import { editInvoice } from "@/store/InvoicesSlice";
+import { createInvoice } from "@/utilities/form";
 
 const Buttons = styled("div", {
   display: "flex",

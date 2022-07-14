@@ -1,15 +1,14 @@
-import Seo from "components/Seo";
-import RootLayout from "layouts/Root";
-import { GetServerSidePropsContext } from "next";
-import EditInvoiceForm from "../../components/ModifyInvoice/EditInvoiceForm";
 import React, { useState } from "react";
-import Wrapper from "components/Invoice/Wrapper";
-import InvoiceHeader from "components/Invoice/InvoiceHeader";
-import InvoiceBody from "components/Invoice/InvoiceBody";
-import InvoiceFooter from "components/Invoice/InvoiceFooter";
-import HomeLink from "components/Invoice/HomeLink";
-import { selectById } from "store/InvoicesSlice";
-import { useAppSelector } from "store/hooks";
+import { GetServerSidePropsContext } from "next";
+import EditInvoiceForm from "@/components/ModifyInvoice/EditInvoiceForm";
+import Wrapper from "@/components/Invoice/Wrapper";
+import InvoiceHeader from "@/components/Invoice/InvoiceHeader";
+import InvoiceBody from "@/components/Invoice/InvoiceBody";
+import InvoiceFooter from "@/components/Invoice/InvoiceFooter";
+import HomeLink from "@/components/Invoice/HomeLink";
+import { selectById } from "@/store/InvoicesSlice";
+import { useAppSelector } from "@/store/hooks";
+import Seo from "@/components/Seo";
 
 interface IIndex {
   id: string;

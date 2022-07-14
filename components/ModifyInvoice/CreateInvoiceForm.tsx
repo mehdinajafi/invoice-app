@@ -2,17 +2,17 @@ import React from "react";
 import { Formik } from "formik";
 import { AnimatePresence } from "framer-motion";
 import { styled } from "stitches-config";
-import { Button } from "components/Button";
+import { Button } from "@/components/Button";
 import Backdrop from "./Backdrop";
 import Fields from "./Fields";
 import Form from "./Form";
 import Header from "./Header";
-import { initialValues, validationSchema } from "../../data/form";
-import { addOne } from "store/InvoicesSlice";
-import { createInvoice } from "utilities/form";
-import { generateUniqueId } from "utilities/id";
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { FormValues } from "types/form";
+import { initialValues, validationSchema } from "@/data/form";
+import { addOne } from "@/store/InvoicesSlice";
+import { createInvoice } from "@/utilities/form";
+import { generateUniqueId } from "@/utilities/id";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { FormValues } from "@/types/form";
 
 const Buttons = styled("div", {
   display: "flex",
@@ -25,11 +25,13 @@ const Buttons = styled("div", {
 interface ICreateInvoiceForm {
   isOpen: boolean;
   setFormIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onSubmit?: (values: FormValues) => void;
 }
 
 const CreateInvoiceForm: React.FC<ICreateInvoiceForm> = ({
   isOpen,
   setFormIsOpen,
+  onSubmit: onSubmitFromProps,
 }) => {
   const invoicesIds = useAppSelector((state) => state.invoices.ids);
   const dispatch = useAppDispatch();
@@ -58,7 +60,7 @@ const CreateInvoiceForm: React.FC<ICreateInvoiceForm> = ({
     <AnimatePresence>
       {isOpen && (
         <Formik
-          onSubmit={onSubmit}
+          onSubmit={onSubmitFromProps || onSubmit}
           initialValues={initialValues as FormValues}
           validationSchema={validationSchema}
         >

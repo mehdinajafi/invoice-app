@@ -3,7 +3,7 @@ import { useField, useFormikContext } from "formik";
 import { styled } from "stitches-config";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import CalenderIcon from "../../public/images/icon-calendar.svg";
+import CalenderIcon from "@/public/images/icon-calendar.svg";
 
 const Wrapper = styled("div", {
   display: "flex",

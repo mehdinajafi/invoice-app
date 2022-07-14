@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { styled } from "stitches-config";
-import ArrowDownIcon from "../../public/images/icon-arrow-down.svg";
+import ArrowDownIcon from "@/public/images/icon-arrow-down.svg";
 
 const GoBackLink = styled("a", {
   display: "flex",

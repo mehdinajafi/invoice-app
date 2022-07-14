@@ -1,9 +1,9 @@
 import React from "react";
 import { FieldArray, useFormikContext } from "formik";
 import { styled } from "stitches-config";
-import { Button } from "components/Button";
+import { Button } from "@/components/Button";
+import { IItem } from "@/types/invoice";
 import Item from "./Item";
-import { IItem } from "types/invoice";
 
 const Wrapper = styled("fieldset", {
   border: "none",

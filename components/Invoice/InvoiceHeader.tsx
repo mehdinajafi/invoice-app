@@ -2,9 +2,9 @@ import { Button } from "components/Button";
 import { useRouter } from "next/router";
 import React from "react";
 import { styled } from "stitches-config";
-import { useAppDispatch } from "store/hooks";
-import { deleteOne, markInvoiceAsPaid } from "store/InvoicesSlice";
-import IInvoice from "types/invoice";
+import { useAppDispatch } from "@/store/hooks";
+import { deleteOne, markInvoiceAsPaid } from "@/store/InvoicesSlice";
+import IInvoice from "@/types/invoice";
 
 const Wrapper = styled("div", {
   display: "flex",

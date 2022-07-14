@@ -1,8 +1,8 @@
 import Filter from "./Filter";
 import { styled } from "stitches-config";
-import { Filter as FilterType } from "../../pages/index";
-import IconPlus from "../../public/images/icon-plus.svg";
 import { motion } from "framer-motion";
+import { Filter as FilterType } from "@/pages/index";
+import IconPlus from "@/public/images/icon-plus.svg";
 
 const Wrapper = styled(motion.div, {
   display: "flex",
