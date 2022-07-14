@@ -11,13 +11,20 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "downlevelIteration": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "stitches-config": ["stitches.config.js"]
+      "stitches-config": ["stitches.config.js"],
+      "@/store/*": ["store/*"],
+      "@/components/*": ["components/*"],
+      "@/utilities/*": ["utilities/*"],
+      "@/types/*": ["types/*"],
+      "@/pages/*": ["pages/*"],
+      "@/public/*": ["public/*"],
+      "@/data/*": ["data/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
