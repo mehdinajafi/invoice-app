@@ -2,8 +2,9 @@ import { forwardRef } from "react";
 import { useField, useFormikContext } from "formik";
 import { styled } from "stitches-config";
 import ReactDatePicker from "react-datepicker";
+import { formatDate } from "@/utilities/misc";
+import CalenderIcon from "@/images/icon-calendar.svg";
 import "react-datepicker/dist/react-datepicker.css";
-import CalenderIcon from "@/public/images/icon-calendar.svg";
 
 const Wrapper = styled("div", {
   display: "flex",
@@ -60,7 +61,7 @@ const DatePicker: React.FC<IDatePicker> = ({ name, label }) => {
       <ReactDatePicker
         id={name}
         selected={new Date(field.value)}
-        onChange={(date) => setFieldValue(name, date)}
+        onChange={(date) => setFieldValue(name, formatDate(date as Date))}
         dateFormat="MMM d, yyyy"
         customInput={<CustumInput />}
       />

@@ -1,3 +1,4 @@
+import { formatDate } from "@/utilities/misc";
 import * as Yup from "yup";
 
 export const initialValues = {
@@ -15,7 +16,7 @@ export const initialValues = {
     postCode: "",
     country: "",
   },
-  createdAt: new Date(),
+  createdAt: formatDate("now"),
   paymentTerms: "30",
   description: "",
   items: [],
