@@ -56,32 +56,30 @@ const EditInvoiceForm: React.FC<IEditInvoiceForm> = ({
           initialValues={invoice}
           validationSchema={validationSchema}
         >
-          {() => (
-            <React.Fragment>
-              <Backdrop setFormIsOpen={setFormIsOpen} />
-              <Form>
-                <Header>
-                  Edit <span>#</span>
-                  {invoice.id}
-                </Header>
+          <React.Fragment>
+            <Backdrop setFormIsOpen={setFormIsOpen} />
+            <Form>
+              <Header data-testid="edit-invoice-header">
+                Edit <span>#</span>
+                {invoice.id}
+              </Header>
 
-                <Fields />
+              <Fields />
 
-                <Buttons>
-                  <Button
-                    type="button"
-                    variant="light"
-                    onClick={() => setFormIsOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button type="submit" variant="primary">
-                    Save Changes
-                  </Button>
-                </Buttons>
-              </Form>
-            </React.Fragment>
-          )}
+              <Buttons>
+                <Button
+                  type="button"
+                  variant="light"
+                  onClick={() => setFormIsOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <Button type="submit" variant="primary">
+                  Save Changes
+                </Button>
+              </Buttons>
+            </Form>
+          </React.Fragment>
         </Formik>
       )}
     </AnimatePresence>

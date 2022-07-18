@@ -42,39 +42,29 @@ const Items = () => {
       <Legend>Item List</Legend>
       <FieldArray
         name="items"
-        render={(helpers) =>
-          values.items && values.items.length > 0 ? (
-            <ItemsList>
-              {values.items.map((item: IItem, index: number) => (
+        render={(helpers) => (
+          <ItemsList>
+            {values.items &&
+              values.items.length > 0 &&
+              values.items.map((item: IItem, index: number) => (
                 <Item key={index} index={index} helpers={helpers} />
               ))}
-              <AddNewItemButton
-                type="button"
-                variant="light"
-                onClick={() =>
-                  helpers.push({
-                    name: "",
-                    quantity: "",
-                    price: "",
-                    total: "",
-                  })
-                }
-              >
-                + Add New Item
-              </AddNewItemButton>
-            </ItemsList>
-          ) : (
             <AddNewItemButton
               type="button"
               variant="light"
               onClick={() =>
-                helpers.push({ name: "", quantity: "", price: "", total: "" })
+                helpers.push({
+                  name: "",
+                  quantity: "",
+                  price: "",
+                  total: "",
+                })
               }
             >
               + Add New Item
             </AddNewItemButton>
-          )
-        }
+          </ItemsList>
+        )}
       />
     </Wrapper>
   );

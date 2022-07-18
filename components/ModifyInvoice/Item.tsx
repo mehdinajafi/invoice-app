@@ -3,7 +3,7 @@ import { styled } from "stitches-config";
 import { FieldArrayRenderProps, useFormikContext } from "formik";
 import Input from "./Input";
 import IInvoice from "@/types/invoice";
-import DeleteIcon from "@/public/images/icon-delete.svg";
+import DeleteIcon from "@/images/icon-delete.svg";
 
 const Wrapper = styled("div", {
   display: "grid",
@@ -49,19 +49,38 @@ interface IItem {
 
 const Item: React.FC<IItem> = ({ index, helpers }) => {
   const { values, setFieldValue } = useFormikContext<IInvoice>();
+  const quantity = values.items[index].quantity;
+  const price = values.items[index].price;
 
   useEffect(() => {
-    const total = values.items[index].quantity * values.items[index].price;
+    const total = quantity * price;
     const rounded = Math.round((total + Number.EPSILON) * 100) / 100;
     setFieldValue(`items.${index}.total`, rounded || "");
-  }, [values.items[index].quantity, values.items[index].price]);
+  }, [index, setFieldValue, quantity, price]);
 
   return (
-    <Wrapper>
-      <Input label="Item Name" name={`items.${index}.name`} />
-      <Input label="Qty." name={`items.${index}.quantity`} />
-      <Input label="Price" name={`items.${index}.price`} />
-      <Input label="Total" name={`items.${index}.total`} disabled />
+    <Wrapper data-testid="item">
+      <Input
+        label="Item Name"
+        name={`items.${index}.name`}
+        data-testid={`item-name-${index}`}
+      />
+      <Input
+        label="Qty."
+        name={`items.${index}.quantity`}
+        data-testid={`item-quantity-${index}`}
+      />
+      <Input
+        label="Price"
+        name={`items.${index}.price`}
+        data-testid={`item-price-${index}`}
+      />
+      <Input
+        label="Total"
+        name={`items.${index}.total`}
+        data-testid={`item-total-${index}`}
+        disabled
+      />
       <DeleteButton onClick={() => helpers.remove(index)}>
         <DeleteIcon />
       </DeleteButton>

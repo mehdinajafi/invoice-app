@@ -2,11 +2,11 @@ import React from "react";
 import { Formik } from "formik";
 import { AnimatePresence } from "framer-motion";
 import { styled } from "stitches-config";
-import { Button } from "@/components/Button";
 import Backdrop from "./Backdrop";
 import Fields from "./Fields";
 import Form from "./Form";
 import Header from "./Header";
+import { Button } from "@/components/Button";
 import { initialValues, validationSchema } from "@/data/form";
 import { addOne } from "@/store/InvoicesSlice";
 import { createInvoice } from "@/utilities/form";
@@ -31,12 +31,16 @@ interface ICreateInvoiceForm {
 const CreateInvoiceForm: React.FC<ICreateInvoiceForm> = ({
   isOpen,
   setFormIsOpen,
-  onSubmit: onSubmitFromProps,
+  onSubmit,
 }) => {
   const invoicesIds = useAppSelector((state) => state.invoices.ids);
   const dispatch = useAppDispatch();
 
-  const onSubmit = (values: FormValues) => {
+  const handleSubmit = (values: FormValues) => {
+    if (onSubmit) {
+      onSubmit(values);
+    }
+
     dispatch(
       addOne({
         id: generateUniqueId(invoicesIds),
@@ -60,7 +64,7 @@ const CreateInvoiceForm: React.FC<ICreateInvoiceForm> = ({
     <AnimatePresence>
       {isOpen && (
         <Formik
-          onSubmit={onSubmitFromProps || onSubmit}
+          onSubmit={handleSubmit}
           initialValues={initialValues as FormValues}
           validationSchema={validationSchema}
         >

@@ -15,8 +15,8 @@ interface IHeader {
   children: React.ReactNode;
 }
 
-const Header: React.FC<IHeader> = ({ children }) => {
-  return <StyledHeader>{children}</StyledHeader>;
+const Header: React.FC<IHeader> = ({ children, ...props }) => {
+  return <StyledHeader {...props}>{children}</StyledHeader>;
 };
 
 export default Header;

@@ -137,7 +137,9 @@ const Fields = () => {
       {formik.submitCount > 0 && formik.errors && (
         <ErrorsList>
           {reduceErrors(formik.errors).map((error) => (
-            <Error key={error}>{error}</Error>
+            <Error key={error} data-testid="form-error">
+              {error}
+            </Error>
           ))}
         </ErrorsList>
       )}
