@@ -12,7 +12,7 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      background: "hsl(240, 27%, 251%)",
+      background: "hsl(240, 27%, 98%)",
       "subtle-floating": "hsl(0, 0%, 100%)",
 
       primary: "hsl(252, 94%, 67%)",
