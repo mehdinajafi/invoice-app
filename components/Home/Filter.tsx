@@ -2,8 +2,8 @@ import { Menu, MenuList, MenuButton, MenuItem } from "@reach/menu-button";
 import React from "react";
 import { dark, keyframes, styled } from "stitches-config";
 import { Filter as FilterType } from "@/pages/index";
-import ArrowDownIcon from "@/public/images/icon-arrow-down.svg";
-import CheckIcon from "@/public/images/icon-check.svg";
+import ArrowDownIcon from "@/images/icon-arrow-down.svg";
+import CheckIcon from "@/images/icon-check.svg";
 
 const Button = styled(MenuButton, {
   display: "flex",
@@ -151,7 +151,7 @@ const Filter: React.FC<IFilter> = ({ filter, setFilter }) => {
             Filter <span>by status</span> <ArrowDownIcon />
           </Button>
 
-          <List>
+          <List data-testid="filter-menu-list">
             <Item
               label="paid"
               filter={filter}

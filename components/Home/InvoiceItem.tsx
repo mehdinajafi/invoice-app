@@ -4,7 +4,7 @@ import Link from "next/link";
 import { styled } from "stitches-config";
 import IInvoice from "@/types/invoice";
 import { addCommas } from "@/utilities/misc";
-import ArrowDownIcon from "@/public/images/icon-arrow-down.svg";
+import ArrowDownIcon from "@/images/icon-arrow-down.svg";
 
 const Wrapper = styled(motion.a, {
   display: "grid",

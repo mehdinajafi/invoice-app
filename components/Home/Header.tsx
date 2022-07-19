@@ -2,7 +2,7 @@ import Filter from "./Filter";
 import { styled } from "stitches-config";
 import { motion } from "framer-motion";
 import { Filter as FilterType } from "@/pages/index";
-import IconPlus from "@/public/images/icon-plus.svg";
+import IconPlus from "@/images/icon-plus.svg";
 
 const Wrapper = styled(motion.div, {
   display: "flex",
@@ -105,14 +105,17 @@ const Header: React.FC<IHeader> = ({
       <TextWrapper>
         <Title>Invoices</Title>
         <SubHeading>
-          There are {totalFiltredInvoices} {filter === null ? "total" : filter}{" "}
+          There are {totalFiltredInvoices} {!filter ? "total" : filter}{" "}
           invoices.
         </SubHeading>
       </TextWrapper>
 
       <Filter filter={filter} setFilter={setFilter} />
 
-      <NewInvoiceBtn onClick={() => setFormIsOpen(true)}>
+      <NewInvoiceBtn
+        onClick={() => setFormIsOpen(true)}
+        data-testid="new-invoice-button"
+      >
         <PlusIconWrapper>
           <IconPlus />
         </PlusIconWrapper>
