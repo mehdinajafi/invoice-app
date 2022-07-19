@@ -31,9 +31,7 @@ const InvoiceId = styled("h1", {
   fontSize: "$base",
   fontWeight: 700,
   marginBlockEnd: "0.5rem",
-
-  "&:before": {
-    content: "#",
+  "& span": {
     color: "$ntrl-lt",
   },
 });
@@ -136,18 +134,20 @@ const ClientEmail = styled("div", {
 
 interface IInvoiceBody {
   invoice: IInvoice;
-  children?: React.ReactNode;
 }
 
-const InvoiceBody: React.FC<IInvoiceBody> = ({ invoice, children }) => {
+const InvoiceBody: React.FC<IInvoiceBody> = ({ invoice }) => {
   return (
     <Wrapper>
       <InvoiceTitle>
-        <InvoiceId>{invoice.id}</InvoiceId>
+        <InvoiceId>
+          <span>#</span>
+          {invoice.id}
+        </InvoiceId>
         <InvoiceDescription>{invoice.description}</InvoiceDescription>
       </InvoiceTitle>
 
-      <SenderAddress>
+      <SenderAddress data-testid="invoice-sender-address">
         <Address>
           <span>{invoice.senderAddress.street}</span>
           <span>{invoice.senderAddress.city}</span>
@@ -172,7 +172,7 @@ const InvoiceBody: React.FC<IInvoiceBody> = ({ invoice, children }) => {
         </div>
       </Dates>
 
-      <ClientAddress>
+      <ClientAddress data-testid="invoice-client-address">
         <div>Bill to</div>
         <div>{invoice.clientName}</div>
         <Address css={{ textAlign: "start" }}>
