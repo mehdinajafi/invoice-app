@@ -1,8 +1,9 @@
-import { Avatar } from "@/components/Avatar";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { styled } from "stitches-config";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setTheme } from "@/store/ThemeSlice";
+import { Avatar } from "@/components/Avatar";
 import Logo from "./Logo";
 
 const Wrapper = styled("aside", {
@@ -56,11 +57,20 @@ const Divider = styled("div", {
 const Sidebar = () => {
   const theme = useAppSelector((state) => state.theme.value);
   const dispatch = useAppDispatch();
+  // This flag is for show theme toggle only on client
+  const [hasMounted, setHasMounted] = useState<boolean>(false);
 
-  const ChangeThemeToggle = () => {
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  const ThemeToggle = () => {
     if (theme === "light") {
       return (
-        <Button onClick={() => dispatch(setTheme("dark"))}>
+        <Button
+          data-testid="change-theme-to-dark"
+          onClick={() => dispatch(setTheme("dark"))}
+        >
           <Image
             src="/images/icon-moon.svg"
             width={20}
@@ -71,7 +81,10 @@ const Sidebar = () => {
       );
     } else {
       return (
-        <Button onClick={() => dispatch(setTheme("light"))}>
+        <Button
+          data-testid="change-theme-to-light"
+          onClick={() => dispatch(setTheme("light"))}
+        >
           <Image src="/images/icon-sun.svg" width={20} height={20} alt="sun" />
         </Button>
       );
@@ -83,13 +96,14 @@ const Sidebar = () => {
       <Logo />
 
       <OptionsWrapper>
-        <ChangeThemeToggle />
+        {hasMounted && <ThemeToggle />}
         <Divider />
         <Button>
           <a
             href="https://github.com/mehdinajafi"
             target="_blank"
             rel="noreferrer"
+            data-testid="github-link"
           >
             <Avatar
               src="https://avatars.githubusercontent.com/u/49032944?v=4"

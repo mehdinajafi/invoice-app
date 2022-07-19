@@ -4,7 +4,7 @@ import { getCssText } from "stitches-config";
 
 const InitTheme = () => {
   const codeToRunOnClient = `
-  !function(){try{var a=document.documentElement,b=a.classList;b.remove("light","dark");var c=localStorage.getItem("theme");b.add(c||""),a.style.colorScheme=c}catch(d){}}()
+  !function(){try{var a=document.documentElement,b=a.classList;b.remove("light","dark");var c=JSON.parse(localStorage.getItem("persist:root"));b.add(JSON.parse(c.theme).value||""),a.style.colorScheme=JSON.parse(c.theme).theme.value}catch(d){}}()
   `;
 
   // eslint-disable-next-line react/no-danger

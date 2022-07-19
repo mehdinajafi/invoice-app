@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { saveState } from "./browser-storage";
 
 export type Theme = "light" | "dark";
 
@@ -9,8 +8,8 @@ export const addThemeToDocumet = (theme: Theme) => {
   root.classList.remove("light", "dark");
   root.classList.add(theme);
 };
+
 export const setTheme = createAsyncThunk("setTheme", async (theme: Theme) => {
-  saveState("theme", theme);
   addThemeToDocumet(theme);
   return theme;
 });
