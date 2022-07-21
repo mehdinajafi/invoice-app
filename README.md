@@ -18,6 +18,7 @@ Feel free to look around and explore! 😉
 - **Styling:** [Stitches](https://stitches.dev/)
 - **Forms:** [Formik](https://formik.org/) and [Yup](https://www.npmjs.com/package/yup)
 - **Deployment:** [Vercel](https://vercel.com/)
+- **Testing:** [React Testing Library](https://testing-library.com/) and [Jest](https://jestjs.io/)
 
 ## Running Locally
 
