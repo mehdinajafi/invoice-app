@@ -2,7 +2,15 @@
 
 !["invoice app"](https://github.com/mehdinajafi/invoice-app/blob/main/public/images/preview.jpeg?raw=true)
 
-## overview
+## Intro
+
+Hello, there! 👋
+
+Thank you for checking out my solution to the [invoice app challenge](https://www.frontendmentor.io/challenges/invoice-app-i7KaLTQjl) from Frontend Mentor.
+
+Feel free to look around and explore! 😉
+
+## Overview
 
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Store:** [Redux Toolkit](https://redux-toolkit.js.org/)
