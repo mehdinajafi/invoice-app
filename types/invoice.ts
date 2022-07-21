@@ -10,7 +10,7 @@ interface IInvoice {
   createdAt: Date | string;
   paymentDue: string;
   description: string;
-  paymentTerms: string;
+  paymentTerms: number;
   clientName: string;
   clientEmail: string;
   status: "paid" | "draft" | "pending";

@@ -5,14 +5,17 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import IInvoice from "types/invoice";
-import data from "../data/data.json";
+import data from "@/data/data.json";
 
 const invoicesAdapter = createEntityAdapter<IInvoice>({
   selectId: (invoice) => invoice.id,
 });
 
 const emptyInitialState = invoicesAdapter.getInitialState();
-const filledState = invoicesAdapter.upsertMany(emptyInitialState, data);
+const filledState = invoicesAdapter.upsertMany(
+  emptyInitialState,
+  data as IInvoice[]
+);
 
 const Invoices = createSlice({
   name: "invoices",

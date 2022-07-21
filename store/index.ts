@@ -8,29 +8,26 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-  PersistState,
 } from "redux-persist";
-import { PersistPartial } from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
 import invoicesReducer from "./InvoicesSlice";
 import themeReducer from "./ThemeSlice";
 
-const persistConfig = {
-  key: "root",
-  version: 1,
-  storage,
-  whitelist: ["theme"],
-};
+const rootReducer = combineReducers({
+  invoices: invoicesReducer,
+  theme: themeReducer,
+});
+type RootReducer = ReturnType<typeof rootReducer>;
 
 export const store = configureStore({
-  reducer: persistReducer(
+  reducer: persistReducer<RootReducer, any>(
     {
       key: "root",
       version: 1,
       storage,
       whitelist: ["theme"],
     },
-    combineReducers({ invoices: invoicesReducer, theme: themeReducer })
+    rootReducer
   ),
   middleware: (getDefaultMiddleware: any) => {
     return getDefaultMiddleware({

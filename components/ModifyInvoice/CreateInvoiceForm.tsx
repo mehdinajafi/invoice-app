@@ -65,7 +65,7 @@ const CreateInvoiceForm: React.FC<ICreateInvoiceForm> = ({
       {isOpen && (
         <Formik
           onSubmit={handleSubmit}
-          initialValues={initialValues as FormValues}
+          initialValues={initialValues}
           validationSchema={validationSchema}
         >
           {({ values }) => (
