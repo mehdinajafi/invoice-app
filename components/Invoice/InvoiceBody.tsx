@@ -31,6 +31,7 @@ const InvoiceId = styled("h1", {
   fontSize: "$base",
   fontWeight: 700,
   marginBlockEnd: "0.5rem",
+  color: "$ntrl-dkr",
   "& span": {
     color: "$ntrl-lt",
   },
@@ -42,7 +43,6 @@ const InvoiceDescription = styled("div", {
   color: "$ntrl-ltr",
 });
 
-// Address
 const SenderAddress = styled("div", {
   gridArea: "2 / 1 / 3 / 2",
 
@@ -65,7 +65,6 @@ const Address = styled("address", {
   },
 });
 
-// Date
 const Dates = styled("div", {
   display: "flex",
   flexDirection: "column",
@@ -84,9 +83,9 @@ const DateText = styled("div", {
   fontFamily: "$spartan",
   fontSize: "0.9375rem",
   fontWeight: 700,
+  color: "$ntrl-dkr",
 });
 
-// clinet address
 const ClientAddress = styled("div", {
   gridArea: "3 / 2 / 4 / 3",
   fontFamily: "$spartan",
@@ -107,10 +106,10 @@ const ClientAddress = styled("div", {
     fontFamily: "$spartan",
     fontSize: "0.9375rem",
     fontWeight: 700,
+    color: "$ntrl-dkr",
   },
 });
 
-// client email
 const ClientEmail = styled("div", {
   gridArea: "4 / 1 / 5 / 3",
 
@@ -129,6 +128,7 @@ const ClientEmail = styled("div", {
     fontFamily: "$spartan",
     fontSize: "0.9375rem",
     fontWeight: 700,
+    color: "$ntrl-dkr",
   },
 });
 
