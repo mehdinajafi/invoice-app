@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GetServerSidePropsContext } from "next";
+import { useRouter } from "next/router";
 import EditInvoiceForm from "@/components/ModifyInvoice/EditInvoiceForm";
 import Wrapper from "@/components/Invoice/Wrapper";
 import InvoiceHeader from "@/components/Invoice/InvoiceHeader";
@@ -10,51 +10,38 @@ import { selectById } from "@/store/InvoicesSlice";
 import { useAppSelector } from "@/store/hooks";
 import Seo from "@/components/Seo";
 
-interface IIndex {
-  id: string;
-}
-
-const Index: React.FC<IIndex> = ({ id }) => {
-  const invoice = useAppSelector((state) => selectById(state.invoices, id));
+const InvoicePage = () => {
+  const { query } = useRouter();
+  const invoice = useAppSelector((state) =>
+    selectById(state.invoices, query.id as string)
+  );
   const [formIsOpen, setFormIsOpen] = useState(false);
+
+  if (!invoice) {
+    return <div>Invoice Not Found!</div>;
+  }
 
   return (
     <React.Fragment>
-      {invoice && (
-        <React.Fragment>
-          <Seo title={`Invoice | #${invoice.id}`} />
+      <Seo title={`Invoice | #${invoice.id}`} />
 
-          <Wrapper>
-            <HomeLink />
+      <Wrapper>
+        <HomeLink />
 
-            <InvoiceHeader setFormIsOpen={setFormIsOpen} invoice={invoice} />
+        <InvoiceHeader setFormIsOpen={setFormIsOpen} invoice={invoice} />
 
-            <InvoiceBody invoice={invoice} />
+        <InvoiceBody invoice={invoice} />
 
-            <InvoiceFooter invoice={invoice} setFormIsOpen={setFormIsOpen} />
-          </Wrapper>
+        <InvoiceFooter invoice={invoice} setFormIsOpen={setFormIsOpen} />
+      </Wrapper>
 
-          <EditInvoiceForm
-            isOpen={formIsOpen}
-            setFormIsOpen={setFormIsOpen}
-            invoice={invoice}
-          />
-        </React.Fragment>
-      )}
+      <EditInvoiceForm
+        isOpen={formIsOpen}
+        setFormIsOpen={setFormIsOpen}
+        invoice={invoice}
+      />
     </React.Fragment>
   );
 };
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const id = context.query.id;
-
-  return {
-    props: {
-      id,
-    },
-  };
-};
-
-export default Index;
+export default InvoicePage;
